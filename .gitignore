@@ -16,6 +16,7 @@ eggs/
 .eggs/
 lib/
 lib64/
+migrations/
 parts/
 sdist/
 var/
@@ -77,11 +78,13 @@ target/
 
 # celery beat schedule file
 celerybeat-schedule
+celerybeat-schedule.*
 
 # SageMath parsed files
 *.sage.py
 
 # Environments
+myvenv/
 .env
 .venv
 env/
@@ -102,3 +105,5 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+*.bak
