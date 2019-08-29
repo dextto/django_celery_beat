@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [
@@ -131,13 +132,3 @@ BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 CELERY_RESULT_BACKEND = 'amqp://'
 
 CELERY_ANNOTATIONS = {'myapp.tasks.add': {'rate_limit': '5/s'}}
-
-from datetime import timedelta
-
-CELERYBEAT_SCHEDULE = {
-    'add-every-5-seconds': {
-        'task': 'myapp.tasks.add',
-        'schedule': timedelta(seconds=5),
-        'args': (16, 16)
-    },
-}
