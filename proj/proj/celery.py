@@ -31,5 +31,13 @@ app.conf.update(
     CELERY_TASK_RESULT_EXPIRES=3600,
 )
 
+app.conf.beat_schedule = {
+    'add-every-3-seconds': {
+        'task': 'myapp.tasks.add',
+        'schedule': 3.0,
+        'args': (16, 16)
+    },
+}
+
 if __name__ == '__main__':
     app.start()
