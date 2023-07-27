@@ -5,17 +5,19 @@ from __future__ import absolute_import
 from celery import Celery
 
 
-# djano 에서 쓰일 setting 지정 아래의 경우 proj/settings.py 를 사용한다는 뜻
+# django 에서 쓰일 setting 지정 아래의 경우 proj/settings.py 를 사용한다는 뜻
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
 from django.conf import settings  # noqa
 
-# app = Celery('proj',
-#              broker='amqp://guest@localhost//',
-#              backend='amqp://',
-#              include=['proj.tasks'])
+app = Celery(
+    'proj',
+    broker='amqp://guest@localhost//',
+    backend='django-db',
+    include=['proj.tasks']
+)
 
-app = Celery('proj')
+# app = Celery('proj')
 
 # Optional configuration, see the application user guide.
 
