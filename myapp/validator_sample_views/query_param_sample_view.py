@@ -7,7 +7,6 @@ from common.validators import validate_query_params
 
 
 class QueryParamSampleView(APIView):
-
     class Paging(BaseModel):
         page: int = Field(default=1, ge=1)
         page_size: int = Field(default=10, ge=1)

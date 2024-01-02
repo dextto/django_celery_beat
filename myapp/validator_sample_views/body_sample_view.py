@@ -7,7 +7,6 @@ from common.validators import validate_body
 
 
 class BodySampleView(APIView):
-
     class CreatePostBody(BaseModel):
         title: str = Field(min_length=1, max_length=20)
         contents: str = Field(min_length=1, max_length=100)

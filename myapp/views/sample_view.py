@@ -5,4 +5,4 @@ from rest_framework.views import APIView
 
 class SampleView(APIView):
     def get(self, request):
-        return JsonResponse({'sample': 'OK'})
+        return JsonResponse({"sample": "OK"})

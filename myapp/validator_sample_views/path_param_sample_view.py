@@ -7,7 +7,6 @@ from common.validators import validate_path_params
 
 
 class PathParamSampleView(APIView):
-
     class Id(BaseModel):
         id: int = Field(gt=0)
 
@@ -18,5 +17,5 @@ class PathParamSampleView(APIView):
         params: Id,
     ):
         return JsonResponse(
-            {'path_param_sample': params.id},
+            {"path_param_sample": params.id},
         )
