@@ -8,10 +8,13 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 celery = "^5.3.6"
-# django-celery-results = "^2.5.1"
+django-celery-results = "^2.5.1"
 django = "^5.0.1"
 mysqlclient = "^2.2.1"
 
+
+[tool.poetry.group.dev.dependencies]
+django-stubs = "^4.2.7"
 
 [build-system]
 requires = ["poetry-core"]
