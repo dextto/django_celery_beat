@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "django-celery-beat"
+version = "0.1.0"
+description = ""
+authors = ["dextto <dexter.haan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+celery = "^5.3.6"
+# django-celery-results = "^2.5.1"
+django = "^5.0.1"
+mysqlclient = "^2.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

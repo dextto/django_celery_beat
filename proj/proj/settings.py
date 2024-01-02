@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
-    'django_celery_beat',
+    # 'django_celery_beat',
     'django_celery_results',
 ]
 
@@ -78,14 +78,18 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "test",
-        "USER": "root",
-        "PASSWORD": "",
-        "HOST": "localhost",
-        "PORT": "3306",
-        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'celerybeat-schedule.db'),
     }
+    # 'default': {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "test",
+    #     "USER": "root",
+    #     "PASSWORD": "",
+    #     "HOST": "localhost",
+    #     "PORT": "3306",
+    #     "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
+    # }
 }
 
 
