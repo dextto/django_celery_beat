@@ -13,13 +13,25 @@ Sample programs for Python
     - @validate_body
     - @validate_form_data
 
+# How to run Django
+### Create virtual envrionment and install packages
+```
+$ poetry shell
+$ poetry install
+```
+
+### Run Django
+```
+$ python manage.py runserver 3000
+```
+
 # How to run celery and beat
 ### run celery
 ```
-proj$ celery -A proj worker -l info -P eventlet
+$ celery -A proj worker -l info -P eventlet
 ```
 
 ### run beat: proj> celery -A proj beat -l info
 ```
-proj$ celery -A proj beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+$ celery -A proj beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
 ```
