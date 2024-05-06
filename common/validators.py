@@ -3,7 +3,7 @@ from functools import wraps
 from typing import Type
 
 from django.http import JsonResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 from rest_framework import status
 from rest_framework.parsers import JSONParser
 
@@ -15,7 +15,7 @@ def validate_path_params(model: Type[BaseModel]):
             try:
                 params = model(**kwargs)
                 return f(request, params=params, *args)
-            except ValueError as e:
+            except ValidationError as e:
                 return JsonResponse(
                     data={"details": e.errors()},
                     status=status.HTTP_400_BAD_REQUEST,
@@ -36,7 +36,7 @@ def validate_query_params(model: Type[BaseModel]):
             params = request.GET.dict()
             try:
                 validated_params = model.model_validate(params)
-            except ValueError as e:
+            except ValidationError as e:
                 return JsonResponse(
                     data={"details": e.errors()},
                     status=status.HTTP_400_BAD_REQUEST,
@@ -57,7 +57,7 @@ def validate_body(model: Type[BaseModel]):
             body = JSONParser().parse(request)
             try:
                 validated_body = model.model_validate(body)
-            except ValueError as e:
+            except ValidationError as e:
                 return JsonResponse(
                     data={"details": e.errors()},
                     status=status.HTTP_400_BAD_REQUEST,
@@ -80,7 +80,7 @@ def validate_form_data(model: Type[BaseModel]):
             form_data.update(request.FILES)
             try:
                 validated_form_data = model.model_validate(form_data)
-            except ValueError as e:
+            except ValidationError as e:
                 return JsonResponse(
                     data={"details": e.errors()},
                     status=status.HTTP_400_BAD_REQUEST,
