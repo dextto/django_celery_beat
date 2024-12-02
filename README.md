@@ -14,7 +14,7 @@ Sample programs for Python
     - @validate_form_data
 
 # How to run Django
-### Create virtual envrionment and install packages
+### Create virtual environment and install packages
 ```
 $ poetry shell
 $ poetry install
