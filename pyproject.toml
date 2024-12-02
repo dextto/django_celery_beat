@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "django-celery-beat"
+name = "django-sample"
 version = "0.1.0"
 description = ""
 authors = ["dextto <dexter.haan@gmail.com>"]
@@ -13,6 +13,8 @@ django = "^5.0.1"
 mysqlclient = "^2.2.1"
 djangorestframework = "^3.14.0"
 pydantic = "^2.5.3"
+django-celery-beat = "^2.7.0"
+eventlet = "^0.38.0"
 
 
 [tool.poetry.group.dev.dependencies]
