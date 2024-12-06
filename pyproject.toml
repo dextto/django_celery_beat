@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-celery = "^5.3.6"
+celery = {extras = ["sqs"], version = "^5.4.0"}
 django-celery-results = "^2.5.1"
 django = "^5.0.1"
 mysqlclient = "^2.2.1"
@@ -15,6 +15,9 @@ djangorestframework = "^3.14.0"
 pydantic = "^2.5.3"
 django-celery-beat = "^2.7.0"
 eventlet = "^0.38.0"
+boto3 = "^1.35.75"
+kombu = {extras = ["boto3"], version = "^5.4.2"}
+pycurl = "^7.45.3"
 
 
 [tool.poetry.group.dev.dependencies]

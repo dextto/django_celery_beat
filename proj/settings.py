@@ -131,12 +131,21 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+# TODO
+AWS_ACCESS_KEY_ID = "test"
+AWS_SECRET_ACCESS_KEY = "test"
 
 ## Broker settings.
-CELERY_BROKER_URL = "amqp://guest:guest@localhost:15672"
-
-# List of modules to import when celery starts.
-# CELERY_IMPORTS = ('myapp.tasks', )
+CELERY_DEFAULT_QUEUE = "sqs"
+CELERY_BROKER_URL = "sqs://"
+# CELERY_BROKER_URL = "amqp://guest:guest@localhost:15672"  # RabbitMQ 사용시
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    "region": "ap-northeast-2",
+    "visibility_timeout": 3600,
+    "polling_interval": 10,
+    # "queue_name_prefix": "%s-" % {True: "dev", False: "production"}[DEBUG],
+    "CELERYD_PREFETCH_MULTIPLIER": 0,
+}
 
 ## Using the database to store task state and results.
 CELERY_RESULT_BACKEND = "django-db"
@@ -144,5 +153,3 @@ CELERY_RESULT_BACKEND = "django-db"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
-
-CELERY_ANNOTATIONS = {"myapp.tasks.add": {"rate_limit": "5/s"}}
